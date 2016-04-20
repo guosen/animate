@@ -10,6 +10,8 @@ import android.view.View;
 import android.view.ViewPropertyAnimator;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.AccelerateInterpolator;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.view.animation.AnticipateInterpolator;
 import android.view.animation.AnticipateOvershootInterpolator;
 import android.view.animation.BounceInterpolator;
@@ -82,28 +84,35 @@ public class ViewPropertyAnimatorActivity extends BaseActivity {
     }
 
     private void buildAndStartAnimation(View view) {
-        ViewPropertyAnimator animator = view.animate();
+//        ViewPropertyAnimator animator = view.animate();
+//
+//        if (mAnimateAlphaCheck.isChecked() || view.getAlpha() == 0f) {
+//            float animationValue = view.getAlpha() == 0f ? 1f : 0f;
+//            animator.alpha(animationValue);
+//        }
+//        if (mAnimateScaleCheck.isChecked()) {
+//            float animationValue = view.getScaleY() == 0f ? 1f : 0f;
+//            animator.scaleX(animationValue).scaleY(animationValue);
+//        }
+//        if (mAnimateZCheck.isChecked()) {
+//            float animationValue = view.getTranslationZ() != 25f ? 25f : 2f;
+//            animator.translationZ(animationValue);
+//        }
+//        if (mAnimationDurationCheck.isChecked()) {
+//            animator.setDuration(500l);
+//        }
+//        if (mAnimationDelayCheck.isChecked()) {
+//            animator.setStartDelay(500l);
+//        }
+//        animator.setInterpolator(getSelectedInterpolator());
+//        animator.start();
 
-        if (mAnimateAlphaCheck.isChecked() || view.getAlpha() == 0f) {
-            float animationValue = view.getAlpha() == 0f ? 1f : 0f;
-            animator.alpha(animationValue);
-        }
-        if (mAnimateScaleCheck.isChecked()) {
-            float animationValue = view.getScaleY() == 0f ? 1f : 0f;
-            animator.scaleX(animationValue).scaleY(animationValue);
-        }
-        if (mAnimateZCheck.isChecked()) {
-            float animationValue = view.getTranslationZ() != 25f ? 25f : 2f;
-            animator.translationZ(animationValue);
-        }
-        if (mAnimationDurationCheck.isChecked()) {
-            animator.setDuration(500l);
-        }
-        if (mAnimationDelayCheck.isChecked()) {
-            animator.setStartDelay(500l);
-        }
-        animator.setInterpolator(getSelectedInterpolator());
-        animator.start();
+        Animation hyperspaceJump = AnimationUtils.loadAnimation(this, R.anim.main_anim);
+
+        view.startAnimation(hyperspaceJump);
+
+
+
     }
 
     private Interpolator getSelectedInterpolator() {
